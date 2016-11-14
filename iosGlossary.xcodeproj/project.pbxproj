@@ -8,13 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		95402E551DD2776C00CC70EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95402E541DD2776C00CC70EB /* AppDelegate.swift */; };
-		95402E571DD2776C00CC70EB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95402E561DD2776C00CC70EB /* ViewController.swift */; };
+		95402E571DD2776C00CC70EB /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95402E561DD2776C00CC70EB /* LaunchViewController.swift */; };
 		95402E5A1DD2776C00CC70EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95402E581DD2776C00CC70EB /* Main.storyboard */; };
 		95402E5D1DD2776C00CC70EB /* iosGlossary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95402E5B1DD2776C00CC70EB /* iosGlossary.xcdatamodeld */; };
 		95402E5F1DD2776C00CC70EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95402E5E1DD2776C00CC70EB /* Assets.xcassets */; };
 		95402E621DD2776C00CC70EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95402E601DD2776C00CC70EB /* LaunchScreen.storyboard */; };
 		95402E6D1DD2776C00CC70EB /* iosGlossaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95402E6C1DD2776C00CC70EB /* iosGlossaryTests.swift */; };
 		95402E781DD2776C00CC70EB /* iosGlossaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95402E771DD2776C00CC70EB /* iosGlossaryUITests.swift */; };
+		95402E861DD2847B00CC70EB /* AllTermsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95402E851DD2847B00CC70EB /* AllTermsTableViewController.swift */; };
+		95402E881DD28B7300CC70EB /* CancelButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95402E871DD28B7300CC70EB /* CancelButtonDelegate.swift */; };
+		95402E8A1DD28D1F00CC70EB /* CompleteGlossary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95402E891DD28D1F00CC70EB /* CompleteGlossary.swift */; };
+		95402E8C1DD2A72900CC70EB /* TermDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95402E8B1DD2A72900CC70EB /* TermDetailsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +41,7 @@
 /* Begin PBXFileReference section */
 		95402E511DD2776C00CC70EB /* iosGlossary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosGlossary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95402E541DD2776C00CC70EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		95402E561DD2776C00CC70EB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		95402E561DD2776C00CC70EB /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		95402E591DD2776C00CC70EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		95402E5C1DD2776C00CC70EB /* iosGlossary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iosGlossary.xcdatamodel; sourceTree = "<group>"; };
 		95402E5E1DD2776C00CC70EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +53,10 @@
 		95402E731DD2776C00CC70EB /* iosGlossaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosGlossaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		95402E771DD2776C00CC70EB /* iosGlossaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosGlossaryUITests.swift; sourceTree = "<group>"; };
 		95402E791DD2776C00CC70EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95402E851DD2847B00CC70EB /* AllTermsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTermsTableViewController.swift; sourceTree = "<group>"; };
+		95402E871DD28B7300CC70EB /* CancelButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelButtonDelegate.swift; sourceTree = "<group>"; };
+		95402E891DD28D1F00CC70EB /* CompleteGlossary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteGlossary.swift; sourceTree = "<group>"; };
+		95402E8B1DD2A72900CC70EB /* TermDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TermDetailsTableViewController.swift; path = ../TermDetailsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +107,17 @@
 		95402E531DD2776C00CC70EB /* iosGlossary */ = {
 			isa = PBXGroup;
 			children = (
+				95402E8B1DD2A72900CC70EB /* TermDetailsTableViewController.swift */,
 				95402E541DD2776C00CC70EB /* AppDelegate.swift */,
-				95402E561DD2776C00CC70EB /* ViewController.swift */,
+				95402E561DD2776C00CC70EB /* LaunchViewController.swift */,
 				95402E581DD2776C00CC70EB /* Main.storyboard */,
 				95402E5E1DD2776C00CC70EB /* Assets.xcassets */,
 				95402E601DD2776C00CC70EB /* LaunchScreen.storyboard */,
 				95402E631DD2776C00CC70EB /* Info.plist */,
 				95402E5B1DD2776C00CC70EB /* iosGlossary.xcdatamodeld */,
+				95402E851DD2847B00CC70EB /* AllTermsTableViewController.swift */,
+				95402E871DD28B7300CC70EB /* CancelButtonDelegate.swift */,
+				95402E891DD28D1F00CC70EB /* CompleteGlossary.swift */,
 			);
 			path = iosGlossary;
 			sourceTree = "<group>";
@@ -196,6 +208,7 @@
 				TargetAttributes = {
 					95402E501DD2776C00CC70EB = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 93DU6VN4H3;
 						ProvisioningStyle = Automatic;
 					};
 					95402E671DD2776C00CC70EB = {
@@ -263,8 +276,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				95402E5D1DD2776C00CC70EB /* iosGlossary.xcdatamodeld in Sources */,
-				95402E571DD2776C00CC70EB /* ViewController.swift in Sources */,
+				95402E861DD2847B00CC70EB /* AllTermsTableViewController.swift in Sources */,
+				95402E8C1DD2A72900CC70EB /* TermDetailsTableViewController.swift in Sources */,
+				95402E8A1DD28D1F00CC70EB /* CompleteGlossary.swift in Sources */,
+				95402E571DD2776C00CC70EB /* LaunchViewController.swift in Sources */,
 				95402E551DD2776C00CC70EB /* AppDelegate.swift in Sources */,
+				95402E881DD28B7300CC70EB /* CancelButtonDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +433,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 93DU6VN4H3;
 				INFOPLIST_FILE = iosGlossary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codingdojo.iosGlossary;
@@ -428,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 93DU6VN4H3;
 				INFOPLIST_FILE = iosGlossary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codingdojo.iosGlossary;
