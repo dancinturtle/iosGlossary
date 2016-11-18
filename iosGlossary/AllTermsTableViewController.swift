@@ -8,10 +8,16 @@
 
 import UIKit
 
-class AllTermsTableViewController: UITableViewController {
+class AllTermsTableViewController: UITableViewController, CancelButtonDelegate {
+    
+    
+    
     
     let allTerms = CompleteGlossary()
+    
     var termToDetail: NSDictionary?
+
+    
     
     
     
@@ -25,6 +31,8 @@ class AllTermsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,7 +48,7 @@ class AllTermsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //    print ("Definition would be provided, \(indexPath)")
+    
         termToDetail = allTerms.glossary[indexPath.row] as NSDictionary
         performSegue(withIdentifier: "detailsSegue", sender: tableView.cellForRow(at: indexPath))
         
@@ -53,13 +61,13 @@ class AllTermsTableViewController: UITableViewController {
             let navController = segue.destination as! UINavigationController
             let controller = navController.topViewController as! TermDetailsTableViewController
             controller.termObject = termToDetail
+            controller.cancelButtonDelegate = self
             
         }
     }
+    func cancelButtonPressedFrom(controller: UIViewController){
+        dismiss(animated: true, completion: nil)
+    }
     
-    
-    
-    
-
-    
+        
 }

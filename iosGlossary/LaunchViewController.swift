@@ -11,6 +11,7 @@ import UIKit
 class LaunchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CancelButtonDelegate {
     
     let menuItems = ["Fundamentals", "iOS Basics", "iOS Intermediate", "iOS Advanced", "Review all terms"]
+    var stringForTitle: String?
     
    
     @IBOutlet weak var menuTableView: UITableView!
@@ -39,6 +40,13 @@ class LaunchViewController: UIViewController, UITableViewDataSource, UITableView
             
             print ("Going to see all terms")
         }
+        else if segue.identifier == "flashcardsSegue"{
+            let navController = segue.destination as! UINavigationController
+            let controller = navController.topViewController as! FlashcardsViewController
+            controller.cancelButtonDelegate = self
+            controller.navBarTitle = stringForTitle
+        }
+
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,9 +55,22 @@ class LaunchViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         if indexPath == [0,4]{
-            print("Gonna take the segue")
             performSegue(withIdentifier: "toAll", sender: tableView.cellForRow(at: indexPath))
-            
+        }
+        else {
+            if indexPath == [0,0]{
+                stringForTitle = "Fundamentals"
+            }
+            else if indexPath == [0,1]{
+                stringForTitle = "iOS Basics"
+            }
+            else if indexPath == [0,2]{
+                stringForTitle = "iOS Intermediate"
+            }
+            else if indexPath == [0,3]{
+                stringForTitle = "iOS Advanced"
+            }
+            performSegue(withIdentifier: "flashcardsSegue", sender: tableView.cellForRow(at: indexPath))
         }
     }
 
