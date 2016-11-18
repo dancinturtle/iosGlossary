@@ -13,16 +13,15 @@ class AllTermsTableViewController: UITableViewController, CancelButtonDelegate {
     
     
     
-    let allTerms = CompleteGlossary()
+    var allTerms = [GlossyFlashcard]()
+    var filteredTerms = [GlossyFlashcard]()
     
-    var termToDetail: NSDictionary?
+    let searchController = UISearchController(searchResultsController: nil)
 
-    
-    
-    
-    
+    var termToDetail: GlossyFlashcard?
+  
     weak var cancelButtonDelegate: CancelButtonDelegate?
-    
+
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         print ("Cancel Button pressed")
         cancelButtonDelegate?.cancelButtonPressedFrom(controller: self)
@@ -31,25 +30,42 @@ class AllTermsTableViewController: UITableViewController, CancelButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        allTerms = [
+            GlossyFlashcard(term: "compiled vs interpreted", def: "Compiled languages have to be translated completely before running while interpreted languages get translated on the fly as the program is getting read. Swift is a compiled language.", plat: "Fundamentals - Swift - Playground", doc: "https://en.wikipedia.org/wiki/Swift_(programming_language)"),
+            GlossyFlashcard(term:"playground", def: "Playground is an interactive environment within Xcode. The left side is the code editor and the right side shows code output.", plat: "Fundamentals - Swift - Playground", doc: "https://developer.apple.com/swift/blog/?id=35"),
+            GlossyFlashcard(term:"Statically Typed", def: "Swift is statically typed so it forces the developer to be more conscious about types and it also allows the computer to run more efficiently by allocating just enough space for each variable.", plat: "Fundamentals - Swift - Let & Var", doc: "https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309")
+        ]
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
         
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allTerms.glossary.count
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredTerms.count
+        }
+        return allTerms.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "term")
-        cell?.textLabel?.text = String(describing: allTerms.glossary[indexPath.row]["term"]!)
-        print(allTerms.glossary[indexPath.row]["term"]!)
+        let glossyflashcard: GlossyFlashcard
+        if searchController.isActive && searchController.searchBar.text != "" {
+            glossyflashcard = filteredTerms[indexPath.row]
+        }
+        else {
+            glossyflashcard = allTerms[indexPath.row]
+        }
+        cell?.textLabel?.text = glossyflashcard.term
         return cell!
         
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
-        termToDetail = allTerms.glossary[indexPath.row] as NSDictionary
+        termToDetail = allTerms[indexPath.row]
         performSegue(withIdentifier: "detailsSegue", sender: tableView.cellForRow(at: indexPath))
         
 
@@ -68,6 +84,22 @@ class AllTermsTableViewController: UITableViewController, CancelButtonDelegate {
     func cancelButtonPressedFrom(controller: UIViewController){
         dismiss(animated: true, completion: nil)
     }
+    func filterContentForSearchText(searchText: String, scope: String = "All"){
+        filteredTerms = allTerms.filter { glossyflashcard in
+            return glossyflashcard.term.lowercased().contains(searchText.lowercased())
+    }
+        tableView.reloadData()
     
-        
 }
+}
+
+extension AllTermsTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController){
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
+}
+//extension String {
+//    func containsString(find: String) -> Bool {
+//        
+//    }
+//}

@@ -40,12 +40,12 @@ class LaunchViewController: UIViewController, UITableViewDataSource, UITableView
             
             print ("Going to see all terms")
         }
-        else if segue.identifier == "flashcardsSegue"{
-            let navController = segue.destination as! UINavigationController
-            let controller = navController.topViewController as! FlashcardsViewController
-            controller.cancelButtonDelegate = self
-            controller.navBarTitle = stringForTitle
-        }
+//        else if segue.identifier == "flashcardsSegue"{
+//            let navController = segue.destination as! UINavigationController
+//            let controller = navController.topViewController as! FlashcardsViewController
+//            controller.cancelButtonDelegate = self
+//            controller.navBarTitle = stringForTitle
+//        }
 
     }
     
