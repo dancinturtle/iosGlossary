@@ -21,6 +21,9 @@
 		95402E8C1DD2A72900CC70EB /* TermDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95402E8B1DD2A72900CC70EB /* TermDetailsTableViewController.swift */; };
 		956C98091DDF6F930074283B /* StudyCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C98081DDF6F930074283B /* StudyCardViewController.swift */; };
 		956C980B1DDF76F90074283B /* FlashCardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C980A1DDF76F90074283B /* FlashCardDelegate.swift */; };
+		956C980D1DDF81260074283B /* StudyCardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C980C1DDF81260074283B /* StudyCardCollectionViewController.swift */; };
+		956C980F1DDF98C60074283B /* StudyCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C980E1DDF98C60074283B /* StudyCollectionViewController.swift */; };
+		956C98111DDF9A0F0074283B /* CollectionViewCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C98101DDF9A0F0074283B /* CollectionViewCustomCell.swift */; };
 		95D6BFFF1DDA7A64007326DC /* FlashcardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6BFFE1DDA7A64007326DC /* FlashcardsViewController.swift */; };
 		95D6C0011DDA8BAC007326DC /* StudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6C0001DDA8BAC007326DC /* StudyViewController.swift */; };
 /* End PBXBuildFile section */
@@ -63,6 +66,9 @@
 		95402E8B1DD2A72900CC70EB /* TermDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TermDetailsTableViewController.swift; path = ../TermDetailsTableViewController.swift; sourceTree = "<group>"; };
 		956C98081DDF6F930074283B /* StudyCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyCardViewController.swift; sourceTree = "<group>"; };
 		956C980A1DDF76F90074283B /* FlashCardDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardDelegate.swift; sourceTree = "<group>"; };
+		956C980C1DDF81260074283B /* StudyCardCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyCardCollectionViewController.swift; sourceTree = "<group>"; };
+		956C980E1DDF98C60074283B /* StudyCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyCollectionViewController.swift; sourceTree = "<group>"; };
+		956C98101DDF9A0F0074283B /* CollectionViewCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCustomCell.swift; sourceTree = "<group>"; };
 		95D6BFFE1DDA7A64007326DC /* FlashcardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashcardsViewController.swift; sourceTree = "<group>"; };
 		95D6C0001DDA8BAC007326DC /* StudyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +136,9 @@
 				95D6C0001DDA8BAC007326DC /* StudyViewController.swift */,
 				956C98081DDF6F930074283B /* StudyCardViewController.swift */,
 				956C980A1DDF76F90074283B /* FlashCardDelegate.swift */,
+				956C980C1DDF81260074283B /* StudyCardCollectionViewController.swift */,
+				956C980E1DDF98C60074283B /* StudyCollectionViewController.swift */,
+				956C98101DDF9A0F0074283B /* CollectionViewCustomCell.swift */,
 			);
 			path = iosGlossary;
 			sourceTree = "<group>";
@@ -291,9 +300,12 @@
 				95402E5D1DD2776C00CC70EB /* iosGlossary.xcdatamodeld in Sources */,
 				95402E861DD2847B00CC70EB /* AllTermsTableViewController.swift in Sources */,
 				95402E8C1DD2A72900CC70EB /* TermDetailsTableViewController.swift in Sources */,
+				956C980D1DDF81260074283B /* StudyCardCollectionViewController.swift in Sources */,
+				956C980F1DDF98C60074283B /* StudyCollectionViewController.swift in Sources */,
 				95D6BFFF1DDA7A64007326DC /* FlashcardsViewController.swift in Sources */,
 				95D6C0011DDA8BAC007326DC /* StudyViewController.swift in Sources */,
 				95402E8A1DD28D1F00CC70EB /* CompleteGlossary.swift in Sources */,
+				956C98111DDF9A0F0074283B /* CollectionViewCustomCell.swift in Sources */,
 				95402E571DD2776C00CC70EB /* LaunchViewController.swift in Sources */,
 				95402E551DD2776C00CC70EB /* AppDelegate.swift in Sources */,
 				956C980B1DDF76F90074283B /* FlashCardDelegate.swift in Sources */,

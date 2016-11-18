@@ -10,7 +10,8 @@ import UIKit
 
 class LaunchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CancelButtonDelegate {
     
-    // When someone clicks on a menu item that takes them to the flashcards, all the terms are currently on All Terms TableView Controller. Should it be the delegate of the flashcards?
+    // Put all the terms here on launch view controller. This controller can pass the deck around to where it needs to go.
+    
     
     let menuItems = ["Fundamentals", "iOS Basics", "iOS Intermediate", "iOS Advanced", "Review all terms"]
     var stringForTitle: String?
@@ -62,6 +63,7 @@ class LaunchViewController: UIViewController, UITableViewDataSource, UITableView
             controller.cancelButtonDelegate = self
 //            controller.flashcardDelegate = FlashCardDelegate(AllTermsTableViewController)
             controller.navBarTitle = stringForTitle
+            controller.allTerms = allTerms
         }
 
     }

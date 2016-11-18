@@ -14,6 +14,7 @@ class FlashcardsViewController: UIViewController {
     var focus = false
     var cancelButtonDelegate: CancelButtonDelegate?
     var flashcardDelegate: FlashCardDelegate?
+    var allTerms: [GlossyFlashcard]?
     
   
     @IBAction func allFlashcardsPressed(_ sender: UIButton) {
@@ -21,10 +22,17 @@ class FlashcardsViewController: UIViewController {
         performSegue(withIdentifier: "studySegue", sender: self)
         print("All flash")
     }
+    
+    
+    @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
+        cancelButtonDelegate?.cancelButtonPressedFrom(controller: self)
+    }
+    
 
     @IBAction func focusFlashcardsPressed(_ sender: UIButton) {
         focus = true
-         performSegue(withIdentifier: "studySegue", sender: self)
+//         performSegue(withIdentifier: "studySegue", sender: self)
+        performSegue(withIdentifier: "studyTwoCollection", sender: self)
         print("Focusing")
     }
   
@@ -34,28 +42,28 @@ class FlashcardsViewController: UIViewController {
                 if let navTitle = navBarTitle {
             self.title = navTitle
         }
+        
     }
     
-//    @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
-//            cancelButtonDelegate?.cancelButtonPressedFrom(controller: self)
-//    }
-//   
-//   //    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-////        let navController = segue.destination as! UINavigationController
-//        let controller = segue.destination as! StudyViewController
-//        if focus == true {
-//            print("Going to focus stack")
-////            controller.navBarTitle = "Focus stack"
-////            focus = false
-//        }
-//        else {
-//            print("Going to all stacks")
-////            controller.navBarTitle = "Full stack"
-//        }
-//    }
-//
-    
-    
-    
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "studySegue"{
+            
+            let controller = segue.destination as! StudyCardViewController
+            if let wholeDeck = allTerms {
+                controller.allTerms = wholeDeck
+            }
+            if focus == true {
+                print("Going to focus stack")
+                controller.navBarTitle = "Focus stack"
+                focus = false
+            }
+            else {
+                print("Going to all stacks")
+                controller.navBarTitle = "Full stack"
+            
+            }
+        }
+    }
 }
