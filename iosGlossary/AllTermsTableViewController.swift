@@ -8,16 +8,19 @@
 
 import UIKit
 
-class AllTermsTableViewController: UITableViewController, CancelButtonDelegate {
+class AllTermsTableViewController: UITableViewController, CancelButtonDelegate, FlashCardDelegate {
     
     
     
-    
+    // all terms will be an array of all the flashcards we make in View Did Load
     var allTerms = [GlossyFlashcard]()
+    
+    // This will be populated by doing a search
     var filteredTerms = [GlossyFlashcard]()
     
     let searchController = UISearchController(searchResultsController: nil)
 
+    // This flashcard is determined by tapping on the term in the tableview
     var termToDetail: GlossyFlashcard?
   
     weak var cancelButtonDelegate: CancelButtonDelegate?
@@ -25,7 +28,6 @@ class AllTermsTableViewController: UITableViewController, CancelButtonDelegate {
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         print ("Cancel Button pressed")
         cancelButtonDelegate?.cancelButtonPressedFrom(controller: self)
-        print ("All terms \(allTerms)")
     }
     
     override func viewDidLoad() {
@@ -41,7 +43,8 @@ class AllTermsTableViewController: UITableViewController, CancelButtonDelegate {
         tableView.tableHeaderView = searchController.searchBar
         
     }
-
+/////////////////////////////// SEARCH BAR STUFF ///////////////////////////////////////////////
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchController.isActive && searchController.searchBar.text != "" {
             return filteredTerms.count
@@ -64,8 +67,14 @@ class AllTermsTableViewController: UITableViewController, CancelButtonDelegate {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
-        termToDetail = allTerms[indexPath.row]
+        let tappedTerm: GlossyFlashcard
+        if searchController.isActive && searchController.searchBar.text != "" {
+            tappedTerm = filteredTerms[indexPath.row]
+        }
+        else {
+            tappedTerm = allTerms[indexPath.row]
+        }
+        termToDetail = tappedTerm
         performSegue(withIdentifier: "detailsSegue", sender: tableView.cellForRow(at: indexPath))
         
 
@@ -87,10 +96,16 @@ class AllTermsTableViewController: UITableViewController, CancelButtonDelegate {
     func filterContentForSearchText(searchText: String, scope: String = "All"){
         filteredTerms = allTerms.filter { glossyflashcard in
             return glossyflashcard.term.lowercased().contains(searchText.lowercased())
-    }
+        }
         tableView.reloadData()
     
-}
+    }
+    func flashcard(){
+        print("Delegate received the commmand")
+    }
+    
+    
+    
 }
 
 extension AllTermsTableViewController: UISearchResultsUpdating {
@@ -98,8 +113,4 @@ extension AllTermsTableViewController: UISearchResultsUpdating {
         filterContentForSearchText(searchText: searchController.searchBar.text!)
     }
 }
-//extension String {
-//    func containsString(find: String) -> Bool {
-//        
-//    }
-//}
+

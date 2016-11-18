@@ -14,8 +14,8 @@ class StudyViewController: UIViewController {
 //    
 //    
 //    
-//    @IBOutlet weak var flipButton: UIButton!
-//    
+    @IBOutlet weak var flipButton: UIButton!
+    
 //    @IBAction func flipButtonWasTapped(_ sender: UIButton) {
 //        updateLabel.text = ""
 //        if flashcard.text == currentDeck[cardIndex]["term"] {
@@ -35,97 +35,95 @@ class StudyViewController: UIViewController {
 //
 //        
 //    }
-//    @IBOutlet weak var updateLabel: UILabel!
-//    
-//    let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-//    var navBarTitle: String?
-////    var allFlashcards = CompleteGlossary().glossary
-//    var currentDeck = [Dictionary<String, String>]()
-//    var cardIndex = 0
-//    var focusCards = [Flashcard]()
-//    
-//    
-//    @IBOutlet weak var gotItButton: UIButton!
-//    
-//    @IBOutlet weak var focusButton: UIButton!
-//    
-//    
-//    
-//    override func viewDidLoad() {
+    @IBOutlet weak var updateLabel: UILabel!
+    
+    let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var navBarTitle: String?
+//    var allFlashcards = CompleteGlossary().glossary
+    var currentDeck = [Dictionary<String, String>]()
+    var cardIndex = 0
+    var focusCards = [Flashcard]()
+    
+    
+    @IBOutlet weak var gotItButton: UIButton!
+    
+    @IBOutlet weak var focusButton: UIButton!
+    
+    
+//
+    override func viewDidLoad() {
+//
+        super.viewDidLoad()
+        flipButton.isEnabled = true
+        updateLabel.text = ""
+        fetchFocusCards()
+//        platLabel.isHidden = true
+//        linkToDocButton.isHidden = true
+//        linkToDocButton.isEnabled = false
 //        
-//        super.viewDidLoad()
-////        flipButton.isEnabled = true
-////        updateLabel.text = ""
-////        fetchFocusCards()
-////        platLabel.isHidden = true
-////        linkToDocButton.isHidden = true
-////        linkToDocButton.isEnabled = false
-////        
-////        
-////        self.view.addGestureRecognizer(rightSwipe)
-////        self.view.addGestureRecognizer(leftSwipe)
-//////        self.view.addGestureRecognizer(tap)
-////        leftSwipe.direction = UISwipeGestureRecognizerDirection.left
-////        
-////        rightSwipe.direction = UISwipeGestureRecognizerDirection.right
-////        print (UISwipeGestureRecognizerDirection.right)
-////        
-////        
-////        if let navTitle = navBarTitle {
-////            self.title = navTitle
-////        }
-////        if self.title == "Full stack" {
-////            focusButton.isHidden = false
-////            focusButton.isEnabled = true
-////            gotItButton.isHidden = true
-////            gotItButton.isEnabled = false
-////            currentDeck = allFlashcards
-////            shuffleFlashcards()
-////            displayCard()
-////            rightSwipe.addTarget(self, action: #selector(StudyViewController.handleSwipes(_:)))
-////            leftSwipe.addTarget(self, action: #selector(StudyViewController.handleSwipes(_:)))
-//////            tap.addTarget(self, action: #selector(StudyViewController.handleTap(_:)))
-////            
-////            
-////        }
-////            
-////        else {
-////            focusButton.isHidden = true
-////            focusButton.isEnabled = false
-////            gotItButton.isHidden = false
-////            gotItButton.isEnabled = true
-//////            fetchFocusCards()
-////            if(focusCards.count == 0){
-////                flashcard.text = "No cards in deck."
-////                flipButton.isEnabled = false
-////                gotItButton.isEnabled = false
-////                gotItButton.isHidden = true
-////                platLabel.isHidden = true
-////                linkToDocButton.isHidden = true
-////                linkToDocButton.isEnabled = false
-////                flashcardCounter.text = ""
-////            }
-////            else {
-////                for card in focusCards {
-////                    for flashcard in allFlashcards {
-////                        if card.term == flashcard["term"] {
-////                            currentDeck.append(flashcard)
-////                            break
-////                        }
-////                    }
-////                }
-////                shuffleFlashcards()
-////                displayCard()
-////                rightSwipe.addTarget(self, action: #selector(StudyViewController.handleSwipes(_:)))
-////                leftSwipe.addTarget(self, action: #selector(StudyViewController.handleSwipes(_:)))
-//////                tap.addTarget(self, action: #selector(StudyViewController.handleTap(_:)))
-////                
-////            }
-////        }
-////        
-////        
+        
+//        self.view.addGestureRecognizer(rightSwipe)
+//        self.view.addGestureRecognizer(leftSwipe)
+//        self.view.addGestureRecognizer(tap)
+//        leftSwipe.direction = UISwipeGestureRecognizerDirection.left
 //        
-//    }
+//        rightSwipe.direction = UISwipeGestureRecognizerDirection.right
+//        print (UISwipeGestureRecognizerDirection.right)
+        
+        
+        if let navTitle = navBarTitle {
+            self.title = navTitle
+        }
+        if self.title == "Full stack" {
+            focusButton.isHidden = false
+            focusButton.isEnabled = true
+            gotItButton.isHidden = true
+            gotItButton.isEnabled = false
+//            currentDeck = allFlashcards
+            shuffleFlashcards()
+//            displayCard()
+//            rightSwipe.addTarget(self, action: #selector(StudyViewController.handleSwipes(_:)))
+//            leftSwipe.addTarget(self, action: #selector(StudyViewController.handleSwipes(_:)))
+//            
+        }
+            
+        else {
+            focusButton.isHidden = true
+            focusButton.isEnabled = false
+            gotItButton.isHidden = false
+            gotItButton.isEnabled = true
+//            fetchFocusCards()
+//            if(focusCards.count == 0){
+//                flashcard.text = "No cards in deck."
+//                flipButton.isEnabled = false
+//                gotItButton.isEnabled = false
+//                gotItButton.isHidden = true
+//                platLabel.isHidden = true
+//                linkToDocButton.isHidden = true
+//                linkToDocButton.isEnabled = false
+//                flashcardCounter.text = ""
+            }
+//            else {
+//                for card in focusCards {
+//                    for flashcard in allFlashcards {
+//                        if card.term == flashcard["term"] {
+//                            currentDeck.append(flashcard)
+//                            break
+//                        }
+//                    }
+//                }
+//                shuffleFlashcards()
+//                displayCard()
+//                rightSwipe.addTarget(self, action: #selector(StudyViewController.handleSwipes(_:)))
+//                leftSwipe.addTarget(self, action: #selector(StudyViewController.handleSwipes(_:)))
+////                tap.addTarget(self, action: #selector(StudyViewController.handleTap(_:)))
+//                
+//            }
+//        }
+        
+        
+//
+    }
 //
 ////    
 ////    
@@ -292,27 +290,27 @@ class StudyViewController: UIViewController {
 ////
 ////    }
 ////    
-////    func shuffleFlashcards(){
-////        for i in 0...currentDeck.count-1 {
-////            let swapCardIndex = Int(arc4random_uniform(UInt32(currentDeck.count)))
-////            let temp = currentDeck[i]
-////            currentDeck[i] = currentDeck[swapCardIndex]
-////            currentDeck[swapCardIndex] = temp
-////        }
-////        
-////    }
-////    
-////    func fetchFocusCards() {
-////        let userRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Flashcard")
-////        do {
-////            let results = try managedObjectContext.fetch(userRequest)
-////            focusCards = results as! [Flashcard]
-////        } catch {
-////            //print the error if it is caught(Swift automatically saves the error in "error")
-////            print("\(error)")
-////        }
-////        
-////    }
-////
+    func shuffleFlashcards(){
+        for i in 0...currentDeck.count-1 {
+            let swapCardIndex = Int(arc4random_uniform(UInt32(currentDeck.count)))
+            let temp = currentDeck[i]
+            currentDeck[i] = currentDeck[swapCardIndex]
+            currentDeck[swapCardIndex] = temp
+        }
+        
+    }
+
+  func fetchFocusCards() {
+        let userRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Flashcard")
+        do {
+            let results = try managedObjectContext.fetch(userRequest)
+           focusCards = results as! [Flashcard]
+        } catch {
+            //print the error if it is caught(Swift automatically saves the error in "error")
+            print("\(error)")
+        }
+    
+    }
+
 
 }

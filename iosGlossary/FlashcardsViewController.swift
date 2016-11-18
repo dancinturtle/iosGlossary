@@ -8,54 +8,50 @@
 
 import UIKit
 
-class FlashcardsViewController: UITableViewController {
-//    
-//    var navBarTitle: String?
-//    var focus = false
-//    var cancelButtonDelegate: CancelButtonDelegate?
-//    
-//    
-//    @IBOutlet weak var fullStackCell: UITableViewCell!
-//    
-//    @IBOutlet weak var focusStackCell: UITableViewCell!
-//    
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        fullStackCell.textLabel?.text = "All flashcards"
-//        fullStackCell.textLabel?.textAlignment = .center
-//        focusStackCell.textLabel?.textAlignment = .center
-//        focusStackCell.textLabel?.text = "Focus flashcards"
-//        if let navTitle = navBarTitle {
-//            self.title = navTitle
-//        }
-//    }
-//    
+class FlashcardsViewController: UIViewController {
+    
+    var navBarTitle: String?
+    var focus = false
+    var cancelButtonDelegate: CancelButtonDelegate?
+    var flashcardDelegate: FlashCardDelegate?
+    
+  
+    @IBAction func allFlashcardsPressed(_ sender: UIButton) {
+        focus = false
+        performSegue(withIdentifier: "studySegue", sender: self)
+        print("All flash")
+    }
+
+    @IBAction func focusFlashcardsPressed(_ sender: UIButton) {
+        focus = true
+         performSegue(withIdentifier: "studySegue", sender: self)
+        print("Focusing")
+    }
+  
+  
+    override func viewDidLoad() {
+        super.viewDidLoad()
+                if let navTitle = navBarTitle {
+            self.title = navTitle
+        }
+    }
+    
 //    @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
 //            cancelButtonDelegate?.cancelButtonPressedFrom(controller: self)
 //    }
 //   
-//    
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-//        print("cell selected! \(indexPath)")
-//      
-//        if indexPath == [1,0]{
-//            focus = true
-//           
-//        }
-//        performSegue(withIdentifier: "studySegue", sender: tableView.cellForRow(at: indexPath))
-//
-//    }
-//    
+//   //    
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 ////        let navController = segue.destination as! UINavigationController
 //        let controller = segue.destination as! StudyViewController
 //        if focus == true {
-//            controller.navBarTitle = "Focus stack"
-//            focus = false
+//            print("Going to focus stack")
+////            controller.navBarTitle = "Focus stack"
+////            focus = false
 //        }
 //        else {
-//            controller.navBarTitle = "Full stack"
+//            print("Going to all stacks")
+////            controller.navBarTitle = "Full stack"
 //        }
 //    }
 //
