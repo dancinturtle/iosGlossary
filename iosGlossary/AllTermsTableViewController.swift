@@ -13,7 +13,7 @@ class AllTermsTableViewController: UITableViewController, CancelButtonDelegate, 
     
     
     // all terms will be an array of all the flashcards we make in View Did Load
-    var allTerms = [GlossyFlashcard]()
+    var allTerms: [GlossyFlashcard]?
     
     // This will be populated by doing a search
     var filteredTerms = [GlossyFlashcard]()
@@ -32,11 +32,11 @@ class AllTermsTableViewController: UITableViewController, CancelButtonDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        allTerms = [
-            GlossyFlashcard(term: "compiled vs interpreted", def: "Compiled languages have to be translated completely before running while interpreted languages get translated on the fly as the program is getting read. Swift is a compiled language.", plat: "Fundamentals - Swift - Playground", doc: "https://en.wikipedia.org/wiki/Swift_(programming_language)"),
-            GlossyFlashcard(term:"playground", def: "Playground is an interactive environment within Xcode. The left side is the code editor and the right side shows code output.", plat: "Fundamentals - Swift - Playground", doc: "https://developer.apple.com/swift/blog/?id=35"),
-            GlossyFlashcard(term:"Statically Typed", def: "Swift is statically typed so it forces the developer to be more conscious about types and it also allows the computer to run more efficiently by allocating just enough space for each variable.", plat: "Fundamentals - Swift - Let & Var", doc: "https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309")
-        ]
+//        allTerms = [
+//            GlossyFlashcard(term: "compiled vs interpreted", def: "Compiled languages have to be translated completely before running while interpreted languages get translated on the fly as the program is getting read. Swift is a compiled language.", plat: "Fundamentals - Swift - Playground", doc: "https://en.wikipedia.org/wiki/Swift_(programming_language)"),
+//            GlossyFlashcard(term:"playground", def: "Playground is an interactive environment within Xcode. The left side is the code editor and the right side shows code output.", plat: "Fundamentals - Swift - Playground", doc: "https://developer.apple.com/swift/blog/?id=35"),
+//            GlossyFlashcard(term:"Statically Typed", def: "Swift is statically typed so it forces the developer to be more conscious about types and it also allows the computer to run more efficiently by allocating just enough space for each variable.", plat: "Fundamentals - Swift - Let & Var", doc: "https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309")
+//        ]
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
@@ -49,7 +49,11 @@ class AllTermsTableViewController: UITableViewController, CancelButtonDelegate, 
         if searchController.isActive && searchController.searchBar.text != "" {
             return filteredTerms.count
         }
-        return allTerms.count
+        if let wholeDeck = allTerms {
+            return wholeDeck.count
+
+        }
+        return 0;
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,7 +63,7 @@ class AllTermsTableViewController: UITableViewController, CancelButtonDelegate, 
             glossyflashcard = filteredTerms[indexPath.row]
         }
         else {
-            glossyflashcard = allTerms[indexPath.row]
+            glossyflashcard = (allTerms?[indexPath.row])!
         }
         cell?.textLabel?.text = glossyflashcard.term
         return cell!
@@ -72,7 +76,7 @@ class AllTermsTableViewController: UITableViewController, CancelButtonDelegate, 
             tappedTerm = filteredTerms[indexPath.row]
         }
         else {
-            tappedTerm = allTerms[indexPath.row]
+            tappedTerm = (allTerms?[indexPath.row])!
         }
         termToDetail = tappedTerm
         performSegue(withIdentifier: "detailsSegue", sender: tableView.cellForRow(at: indexPath))
@@ -94,9 +98,9 @@ class AllTermsTableViewController: UITableViewController, CancelButtonDelegate, 
         dismiss(animated: true, completion: nil)
     }
     func filterContentForSearchText(searchText: String, scope: String = "All"){
-        filteredTerms = allTerms.filter { glossyflashcard in
+        filteredTerms = (allTerms?.filter { glossyflashcard in
             return glossyflashcard.term.lowercased().contains(searchText.lowercased())
-        }
+            })!
         tableView.reloadData()
     
     }

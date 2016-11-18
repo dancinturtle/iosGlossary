@@ -15,6 +15,10 @@ class LaunchViewController: UIViewController, UITableViewDataSource, UITableView
     let menuItems = ["Fundamentals", "iOS Basics", "iOS Intermediate", "iOS Advanced", "Review all terms"]
     var stringForTitle: String?
     
+    
+    // all terms will be an array of all the flashcards we make in View Did Load
+    var allTerms = [GlossyFlashcard]()
+    
    
     @IBOutlet weak var menuTableView: UITableView!
     
@@ -25,6 +29,13 @@ class LaunchViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         menuTableView.delegate = self
         menuTableView.dataSource = self
+        
+        allTerms = [
+            GlossyFlashcard(term: "compiled vs interpreted", def: "Compiled languages have to be translated completely before running while interpreted languages get translated on the fly as the program is getting read. Swift is a compiled language.", plat: "Fundamentals - Swift - Playground", doc: "https://en.wikipedia.org/wiki/Swift_(programming_language)"),
+            GlossyFlashcard(term:"playground", def: "Playground is an interactive environment within Xcode. The left side is the code editor and the right side shows code output.", plat: "Fundamentals - Swift - Playground", doc: "https://developer.apple.com/swift/blog/?id=35"),
+            GlossyFlashcard(term:"Statically Typed", def: "Swift is statically typed so it forces the developer to be more conscious about types and it also allows the computer to run more efficiently by allocating just enough space for each variable.", plat: "Fundamentals - Swift - Let & Var", doc: "https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309")
+        ]
+
         
     }
     
@@ -39,6 +50,9 @@ class LaunchViewController: UIViewController, UITableViewDataSource, UITableView
             let navController = segue.destination as! UINavigationController
             let controller = navController.topViewController as! AllTermsTableViewController
             controller.cancelButtonDelegate = self
+    
+            controller.allTerms = allTerms
+            
             
             print ("Going to see all terms")
         }
