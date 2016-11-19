@@ -10,6 +10,7 @@ import UIKit
 
 class CollectionViewCustomCell: UICollectionViewCell {
     
+    @IBOutlet weak var flashcardLabel: UILabel!
     
     @IBAction func gotItButtonPressed(_ sender: UIButton) {
         print("Got it in the custom cell")

@@ -33,7 +33,7 @@
                                         <rect key="frame" x="0.0" y="28" width="327" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aTF-p9-Dn8" id="DGk-vd-Sa7">
-                                            <rect key="frame" x="0.0" y="0.0" width="327" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="327" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -110,7 +110,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="allFlashButton" destination="HmG-P1-hd8" id="nUU-Iw-eYk"/>
                         <segue destination="GUu-gM-nZz" kind="show" identifier="studySegue" id="1c3-F8-ZVd"/>
                         <segue destination="sge-vG-qRw" kind="show" identifier="studyCollectionSegue" id="5Zt-cu-eKM"/>
                         <segue destination="TvV-YF-4pR" kind="show" identifier="studyTwoCollection" id="ijj-3I-LKQ"/>
@@ -193,11 +192,11 @@
         <scene sceneID="udd-7Z-nlo">
             <objects>
                 <collectionViewController id="TvV-YF-4pR" customClass="StudyCollectionViewController" customModule="iosGlossary" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Vkr-xo-W1l">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" id="Vkr-xo-W1l">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8EY-ex-3pe">
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="8EY-ex-3pe">
                             <size key="itemSize" width="374" height="528"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -205,7 +204,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="flashcardCell" id="s9v-OH-hP1" customClass="CollectionViewCustomCell" customModule="iosGlossary" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="37.5" width="374" height="528"/>
+                                <rect key="frame" x="0.0" y="38" width="374" height="528"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="528"/>
@@ -278,6 +277,9 @@
                                     <constraint firstItem="kzf-hz-kDO" firstAttribute="centerX" secondItem="s9v-OH-hP1" secondAttribute="centerX" id="l0H-VL-JJo"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="VCc-XR-UJN" secondAttribute="bottom" constant="65" id="xCR-JJ-dPm"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="flashcardLabel" destination="kzf-hz-kDO" id="re3-hs-asd"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -508,7 +510,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Of2-mr-6q7" id="gRV-XX-2HR">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -548,7 +550,7 @@
                                         <rect key="frame" x="0.0" y="56" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CKD-db-q5U" id="rWB-mc-1As">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="149"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -557,10 +559,10 @@
                             <tableViewSection headerTitle="Platform Tab" id="6mT-D9-2IP">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="B38-Bt-VaT">
-                                        <rect key="frame" x="0.0" y="262" width="375" height="150"/>
+                                        <rect key="frame" x="0.0" y="263" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B38-Bt-VaT" id="6S3-7a-cOk">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="149"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -569,10 +571,10 @@
                             <tableViewSection headerTitle="Resources" id="0S2-eC-iTZ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="X2p-1z-tBF">
-                                        <rect key="frame" x="0.0" y="468" width="375" height="150"/>
+                                        <rect key="frame" x="0.0" y="470" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X2p-1z-tBF" id="Uth-dc-sOr">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="149"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smQ-xi-syl">
