@@ -23,6 +23,7 @@ class LaunchViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         menuTableView.delegate = self
         menuTableView.dataSource = self
+        print("Launch loaded")
         
     }
     
