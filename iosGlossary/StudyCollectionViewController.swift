@@ -7,51 +7,80 @@
 //
 
 import UIKit
+import CoreData
+
 
 class StudyCollectionViewController: UICollectionViewController, FlashCardDelegate {
     
    
+    let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var indexPathsForVisibleItems: [IndexPath]?
-    let lettersarray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-  
     var allTerms: [GlossyFlashcard]?
     var navBarTitle: String?
     var indexPathOnRotation: NSIndexPath?
+    var focusCards = [Flashcard]()
+    var currentDeck = [GlossyFlashcard]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if let navTitle = navBarTitle {
             self.title = navTitle
+            if navTitle == "Full stack"{
+                if let wholeDeck = allTerms {
+                    currentDeck = wholeDeck
+                }
+            }
+            else {
+                fetchFocusCards()
+                if let wholeDeck = allTerms {
+                    for card in focusCards{
+                        for term in wholeDeck {
+                            if card.term == term.term {
+                                currentDeck.append(term)
+                                break
+                            }
+                        }
+                    }
+                }
+            }
         }
-      
+        print("Current deck", currentDeck)
     }
     
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        if let wholeDeck = allTerms {
-            return wholeDeck.count
+        if currentDeck.count > 0 {
+            return currentDeck.count
         }
-        return 0
+        else {
+            return 1
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "flashcardCell", for: indexPath as IndexPath) as! CollectionViewCustomCell
         cell.delegate = self
         
-        if let wholeDeck = allTerms {
-            cell.flashcardLabel.text = wholeDeck[indexPath.item].term
-            cell.platformLabel.text = wholeDeck[indexPath.item].plat
-//            cell.linkToDocsButton.setTitle(wholeDeck[indexPath.item].doc, for: UIControlState.normal)
+        if currentDeck.count > 0 {
+            if cell.side == "front" {
+                cell.flashcardLabel.text = currentDeck[indexPath.item].term
+            }
+            else {
+                cell.flashcardLabel.text = currentDeck[indexPath.item].def
+            }
+            cell.platformLabel.text = currentDeck[indexPath.item].plat
             cell.counter = indexPath.item + 1
-            cell.totalDeck = wholeDeck.count
+            cell.totalDeck = currentDeck.count
         }
+        
         else {
             cell.flashcardLabel.text = "No cards found"
         }
-        cell.displayCell()
+//            cell.linkToDocsButton.setTitle(wholeDeck[indexPath.item].doc, for: UIControlState.normal)
+        cell.displayCell()  
         return cell
         
     }
@@ -115,6 +144,17 @@ class StudyCollectionViewController: UICollectionViewController, FlashCardDelega
 
             }
         }
+    }
+    
+    func fetchFocusCards() {
+        let userRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Flashcard")
+        do {
+            let results = try managedObjectContext.fetch(userRequest)
+            focusCards = results as! [Flashcard]
+        } catch {
+            print("\(error)")
+        }
+        
     }
 
 }

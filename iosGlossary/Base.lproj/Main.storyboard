@@ -242,21 +242,21 @@
                                                 <action selector="flipButtonPressed:" destination="s9v-OH-hP1" eventType="touchUpInside" id="qnq-a2-KZI"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Counter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IkS-K7-sTR">
-                                            <rect key="frame" x="159.5" y="499" width="55.5" height="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IkS-K7-sTR">
+                                            <rect key="frame" x="187.5" y="517" width="0.0" height="0.0"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVm-pH-gbn">
-                                            <rect key="frame" x="16" y="466" width="342" height="30"/>
+                                            <rect key="frame" x="16" y="484" width="342" height="30"/>
                                             <state key="normal" title="Link to docs"/>
                                             <connections>
                                                 <action selector="visitDocsButtonPressed:" destination="s9v-OH-hP1" eventType="touchUpInside" id="mL4-zs-lFp"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Platform" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VGj-L2-QyI">
-                                            <rect key="frame" x="16" y="442" width="342" height="21"/>
+                                            <rect key="frame" x="16" y="460" width="342" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>

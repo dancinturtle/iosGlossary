@@ -31,7 +31,6 @@ class FlashcardsViewController: UIViewController {
 
     @IBAction func focusFlashcardsPressed(_ sender: UIButton) {
         focus = true
-//         performSegue(withIdentifier: "studySegue", sender: self)
         performSegue(withIdentifier: "studyTwoCollection", sender: self)
         print("Focusing")
     }
