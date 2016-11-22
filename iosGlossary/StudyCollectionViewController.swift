@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StudyCollectionViewController: UICollectionViewController {
+class StudyCollectionViewController: UICollectionViewController, FlashCardDelegate {
     
    
     var indexPathsForVisibleItems: [IndexPath]?
@@ -39,12 +39,19 @@ class StudyCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "flashcardCell", for: indexPath as IndexPath) as! CollectionViewCustomCell
+        cell.delegate = self
+        
         if let wholeDeck = allTerms {
             cell.flashcardLabel.text = wholeDeck[indexPath.item].term
+            cell.platformLabel.text = wholeDeck[indexPath.item].plat
+//            cell.linkToDocsButton.setTitle(wholeDeck[indexPath.item].doc, for: UIControlState.normal)
+            cell.counter = indexPath.item + 1
+            cell.totalDeck = wholeDeck.count
         }
         else {
             cell.flashcardLabel.text = "No cards found"
         }
+        cell.displayCell()
         return cell
         
     }
@@ -78,6 +85,36 @@ class StudyCollectionViewController: UICollectionViewController {
         
         
         
+    }
+    
+    func flipFlashcard(sender: CollectionViewCustomCell){
+        let indexpath = collectionView?.indexPath(for: sender)?.row
+        if let wholeDeck = allTerms {
+            if sender.side == "front"{
+                sender.flashcardLabel.text = wholeDeck[indexpath!].term
+            }
+            else {
+                sender.flashcardLabel.text = wholeDeck[indexpath!].def
+            }
+        }
+        sender.displayCell()
+    }
+    
+    func visitDocs(sender: CollectionViewCustomCell){
+        print("delegate knows to visit docs")
+        let indexpath = collectionView?.indexPath(for: sender)?.row
+        if let wholeDeck = allTerms {
+            let stringurl = String(describing: wholeDeck[indexpath!].doc)
+            let url = URL(string: stringurl)
+             if UIApplication.shared.canOpenURL(url!){
+                 UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                UIApplication.shared.open(url!, options: [:], completionHandler: {
+                    (success) in
+                    print("Open url: \(success)")})
+
+
+            }
+        }
     }
 
 }

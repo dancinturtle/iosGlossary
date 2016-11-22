@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AllTermsTableViewController: UITableViewController, CancelButtonDelegate, FlashCardDelegate {
+class AllTermsTableViewController: UITableViewController, CancelButtonDelegate {
     
     
     
@@ -32,11 +32,6 @@ class AllTermsTableViewController: UITableViewController, CancelButtonDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        allTerms = [
-//            GlossyFlashcard(term: "compiled vs interpreted", def: "Compiled languages have to be translated completely before running while interpreted languages get translated on the fly as the program is getting read. Swift is a compiled language.", plat: "Fundamentals - Swift - Playground", doc: "https://en.wikipedia.org/wiki/Swift_(programming_language)"),
-//            GlossyFlashcard(term:"playground", def: "Playground is an interactive environment within Xcode. The left side is the code editor and the right side shows code output.", plat: "Fundamentals - Swift - Playground", doc: "https://developer.apple.com/swift/blog/?id=35"),
-//            GlossyFlashcard(term:"Statically Typed", def: "Swift is statically typed so it forces the developer to be more conscious about types and it also allows the computer to run more efficiently by allocating just enough space for each variable.", plat: "Fundamentals - Swift - Let & Var", doc: "https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309")
-//        ]
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
@@ -104,10 +99,6 @@ class AllTermsTableViewController: UITableViewController, CancelButtonDelegate, 
         tableView.reloadData()
     
     }
-    func flashcard(){
-        print("Delegate received the commmand")
-    }
-    
     
     
 }

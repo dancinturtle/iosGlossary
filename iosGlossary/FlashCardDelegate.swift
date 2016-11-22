@@ -10,5 +10,6 @@ import UIKit
 
 
 protocol FlashCardDelegate: class {
-    func flashcard()
+    func flipFlashcard(sender: CollectionViewCustomCell)
+    func visitDocs(sender: CollectionViewCustomCell)
 }

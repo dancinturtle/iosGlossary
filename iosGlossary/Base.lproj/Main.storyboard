@@ -220,6 +220,9 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAs-jY-FoI">
                                             <rect key="frame" x="316" y="16" width="42" height="30"/>
                                             <state key="normal" title="Focus"/>
+                                            <connections>
+                                                <action selector="focusButtonPressed:" destination="s9v-OH-hP1" eventType="touchUpInside" id="Iuj-RB-DEP"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWP-UY-ISi" userLabel="Update">
                                             <rect key="frame" x="159" y="20.5" width="56.5" height="21"/>
@@ -227,8 +230,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flashcard info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzf-hz-kDO" userLabel="Flashcard">
-                                            <rect key="frame" x="133.5" y="61.5" width="107.5" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flashcard info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzf-hz-kDO" userLabel="Flashcard">
+                                            <rect key="frame" x="16" y="61.5" width="342" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -246,11 +249,14 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVm-pH-gbn">
-                                            <rect key="frame" x="145" y="466" width="84" height="30"/>
+                                            <rect key="frame" x="16" y="466" width="342" height="30"/>
                                             <state key="normal" title="Link to docs"/>
+                                            <connections>
+                                                <action selector="visitDocsButtonPressed:" destination="s9v-OH-hP1" eventType="touchUpInside" id="mL4-zs-lFp"/>
+                                            </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Platform" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VGj-L2-QyI">
-                                            <rect key="frame" x="154.5" y="442" width="65" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Platform" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VGj-L2-QyI">
+                                            <rect key="frame" x="16" y="442" width="342" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -267,18 +273,26 @@
                                     <constraint firstItem="BWP-UY-ISi" firstAttribute="centerY" secondItem="ii9-45-8RP" secondAttribute="centerY" id="80G-XR-7pB"/>
                                     <constraint firstItem="VCc-XR-UJN" firstAttribute="centerX" secondItem="s9v-OH-hP1" secondAttribute="centerX" id="8JT-2A-lyC"/>
                                     <constraint firstItem="kzf-hz-kDO" firstAttribute="top" secondItem="BWP-UY-ISi" secondAttribute="bottom" constant="20" id="NQb-Qu-Nve"/>
+                                    <constraint firstItem="kzf-hz-kDO" firstAttribute="leading" secondItem="s9v-OH-hP1" secondAttribute="leadingMargin" constant="8" id="Oxv-Nk-nlh"/>
                                     <constraint firstItem="VCc-XR-UJN" firstAttribute="top" secondItem="BWP-UY-ISi" secondAttribute="bottom" constant="12" id="QEv-Am-NY9"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="VGj-L2-QyI" secondAttribute="trailing" constant="8" id="Qql-H3-AcE"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="IkS-K7-sTR" secondAttribute="bottom" constant="3" id="Upd-a1-dbU"/>
                                     <constraint firstItem="pVm-pH-gbn" firstAttribute="centerX" secondItem="s9v-OH-hP1" secondAttribute="centerX" id="VJP-f2-tEP"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="kzf-hz-kDO" secondAttribute="trailing" constant="8" id="VJh-Qb-a8p"/>
                                     <constraint firstItem="pVm-pH-gbn" firstAttribute="top" secondItem="VGj-L2-QyI" secondAttribute="bottom" constant="3" id="WwE-GU-wjd"/>
                                     <constraint firstItem="VCc-XR-UJN" firstAttribute="leading" secondItem="s9v-OH-hP1" secondAttribute="leadingMargin" constant="8" id="YIc-H6-y4r"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="kAs-jY-FoI" secondAttribute="trailing" constant="8" id="bpX-tO-3C4"/>
                                     <constraint firstItem="BWP-UY-ISi" firstAttribute="centerX" secondItem="s9v-OH-hP1" secondAttribute="centerX" id="ch0-2O-NHb"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="pVm-pH-gbn" secondAttribute="trailing" constant="8" id="kAZ-mc-FQI"/>
                                     <constraint firstItem="kzf-hz-kDO" firstAttribute="centerX" secondItem="s9v-OH-hP1" secondAttribute="centerX" id="l0H-VL-JJo"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="VCc-XR-UJN" secondAttribute="bottom" constant="65" id="xCR-JJ-dPm"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="counterLabel" destination="IkS-K7-sTR" id="2l7-db-g6i"/>
                                     <outlet property="flashcardLabel" destination="kzf-hz-kDO" id="re3-hs-asd"/>
+                                    <outlet property="linkToDocsButton" destination="pVm-pH-gbn" id="ock-lC-45r"/>
+                                    <outlet property="platformLabel" destination="VGj-L2-QyI" id="vrN-Fc-4BE"/>
+                                    <outlet property="updateLabel" destination="BWP-UY-ISi" id="GFd-iu-lMe"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
