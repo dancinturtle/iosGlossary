@@ -19,7 +19,7 @@ class FlashcardsViewController: UIViewController {
   
     @IBAction func allFlashcardsPressed(_ sender: UIButton) {
         focus = false
-        performSegue(withIdentifier: "studySegue", sender: self)
+        performSegue(withIdentifier: "studyTwoCollection", sender: self)
         print("All flash")
     }
     
@@ -48,9 +48,9 @@ class FlashcardsViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-        if segue.identifier == "studySegue"{
+        if segue.identifier == "studyTwoCollection"{
             
-            let controller = segue.destination as! StudyCardViewController
+            let controller = segue.destination as! StudyCollectionViewController
             if let wholeDeck = allTerms {
                 controller.allTerms = wholeDeck
             }

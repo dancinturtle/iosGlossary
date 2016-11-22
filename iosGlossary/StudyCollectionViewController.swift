@@ -14,24 +14,41 @@ class StudyCollectionViewController: UICollectionViewController {
     var indexPathsForVisibleItems: [IndexPath]?
     let lettersarray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
   
-    
+    var allTerms: [GlossyFlashcard]?
+    var navBarTitle: String?
     var indexPathOnRotation: NSIndexPath?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let navTitle = navBarTitle {
+            self.title = navTitle
+        }
       
     }
     
+    
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return lettersarray.count
+        if let wholeDeck = allTerms {
+            return wholeDeck.count
+        }
+        return 0
     }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "flashcardCell", for: indexPath as IndexPath) as! CollectionViewCustomCell
-        
-        cell.flashcardLabel.text = lettersarray[indexPath.item]
+        if let wholeDeck = allTerms {
+            cell.flashcardLabel.text = wholeDeck[indexPath.item].term
+        }
+        else {
+            cell.flashcardLabel.text = "No cards found"
+        }
         return cell
         
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 
         return CGSize(width: view.bounds.width, height: view.bounds.height/1.1)
