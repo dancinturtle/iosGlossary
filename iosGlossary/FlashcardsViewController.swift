@@ -53,6 +53,7 @@ class FlashcardsViewController: UIViewController {
             if let wholeDeck = allTerms {
                 controller.allTerms = wholeDeck
             }
+            controller.section = self.title
             if focus == true {
                 print("Going to focus stack")
                 controller.navBarTitle = "Focus stack"

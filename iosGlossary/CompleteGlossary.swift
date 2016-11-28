@@ -13,40 +13,13 @@ class GlossyFlashcard {
     var def : String
     var plat: String
     var doc : String
+    var section : String
     
-    init(term: String, def: String, plat: String, doc: String){
+    init(term: String, def: String, plat: String, doc: String, section: String){
         self.term = term
         self.def = def
         self.plat = plat
         self.doc = doc
+        self.section = section
     }
 }
-    
-//    
-//    let glossary = [
-
-//
-//
-//
-//
-//
-//
-//    [],
-//    ["],
-//    ["],
-//    ["],
-//    ["],
-//    [],
-//    ["],
-//    ["],
-//    [],
-//    [],
-//    [],
-//    [",
-//    ["],
-//    ["term": ],
-//    [""]
-//    ]
-//    
-//    
-//}

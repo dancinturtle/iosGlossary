@@ -12,4 +12,6 @@ import UIKit
 protocol FlashCardDelegate: class {
     func flipFlashcard(sender: CollectionViewCustomCell)
     func visitDocs(sender: CollectionViewCustomCell)
+    func addToFocusDeck(sender: CollectionViewCustomCell)
+    func removeFromFocusDeck(sender: CollectionViewCustomCell)
 }
