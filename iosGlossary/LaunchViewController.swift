@@ -13,7 +13,7 @@ class LaunchViewController: UIViewController, UITableViewDataSource, UITableView
     // Put all the terms here on launch view controller. This controller can pass the deck around to where it needs to go.
     
     
-    let menuItems = ["Fundamentals", "iOS Basics", "iOS Intermediate", "iOS Advanced", "Review all terms"]
+    let menuItems = ["Fundamentals", "iOS Basics", "iOS Intermediate", "iOS Advanced", "Review all terms", "How to use this app"]
     var stringForTitle: String?
     
     
@@ -150,6 +150,9 @@ class LaunchViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         if indexPath == [0,4]{
             performSegue(withIdentifier: "toAll", sender: tableView.cellForRow(at: indexPath))
+        }
+        else if indexPath == [0,5]{
+            print("Help!!!!")
         }
         else {
             if indexPath == [0,0]{
