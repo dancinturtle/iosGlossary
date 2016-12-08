@@ -63,7 +63,8 @@ class StudyCollectionViewController: UICollectionViewController, FlashCardDelega
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
         if currentDeck.count > 0 {
-            return currentDeck.count
+            return currentDeck.count*1000
+            //return Int.max
         }
         else {
             return 1
@@ -71,6 +72,9 @@ class StudyCollectionViewController: UICollectionViewController, FlashCardDelega
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let itemToShow = currentDeck[indexPath.row % currentDeck.count]
+        
        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "flashcardCell", for: indexPath as IndexPath) as! CollectionViewCustomCell
         cell.delegate = self
@@ -84,13 +88,13 @@ class StudyCollectionViewController: UICollectionViewController, FlashCardDelega
         
         if currentDeck.count > 0 {
             if cell.side == "front" {
-                cell.flashcardLabel.text = currentDeck[indexPath.item].term
+                cell.flashcardLabel.text = itemToShow.term
             }
             else {
-                cell.flashcardLabel.text = currentDeck[indexPath.item].def
+                cell.flashcardLabel.text = itemToShow.def
             }
-            cell.platformLabel.text = currentDeck[indexPath.item].plat
-            cell.counter = indexPath.item + 1
+            cell.platformLabel.text = itemToShow.plat
+            cell.counter = indexPath.row % currentDeck.count + 1
             cell.totalDeck = currentDeck.count
         }
         

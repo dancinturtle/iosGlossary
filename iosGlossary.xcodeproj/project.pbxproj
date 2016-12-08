@@ -229,7 +229,7 @@
 				TargetAttributes = {
 					95402E501DD2776C00CC70EB = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 93DU6VN4H3;
+						DevelopmentTeam = X3W4N77G35;
 						ProvisioningStyle = Automatic;
 					};
 					95402E671DD2776C00CC70EB = {
@@ -461,10 +461,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 93DU6VN4H3;
+				DEVELOPMENT_TEAM = X3W4N77G35;
 				INFOPLIST_FILE = iosGlossary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.codingdojo.iosGlossary;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codingdojo1.iosGlossary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -474,10 +474,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 93DU6VN4H3;
+				DEVELOPMENT_TEAM = X3W4N77G35;
 				INFOPLIST_FILE = iosGlossary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.codingdojo.iosGlossary;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codingdojo1.iosGlossary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
