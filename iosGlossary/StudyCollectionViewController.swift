@@ -72,9 +72,6 @@ class StudyCollectionViewController: UICollectionViewController, FlashCardDelega
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let itemToShow = currentDeck[indexPath.row % currentDeck.count]
-        
        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "flashcardCell", for: indexPath as IndexPath) as! CollectionViewCustomCell
         cell.delegate = self
@@ -87,6 +84,7 @@ class StudyCollectionViewController: UICollectionViewController, FlashCardDelega
         cell.updateLabel.isHidden = true
         
         if currentDeck.count > 0 {
+            let itemToShow = currentDeck[indexPath.row % currentDeck.count]
             if cell.side == "front" {
                 cell.flashcardLabel.text = itemToShow.term
             }
