@@ -12,44 +12,68 @@ class AllTermsTableViewController: UITableViewController, CancelButtonDelegate {
     
     
     
+    // all terms will be an array of all the flashcards we make in View Did Load
+    var allTerms: [GlossyFlashcard]?
     
-    let allTerms = CompleteGlossary()
+    // This will be populated by doing a search
+    var filteredTerms = [GlossyFlashcard]()
     
-    var termToDetail: NSDictionary?
+    let searchController = UISearchController(searchResultsController: nil)
 
-    
-    
-    
-    
+    // This flashcard is determined by tapping on the term in the tableview
+    var termToDetail: GlossyFlashcard?
+  
     weak var cancelButtonDelegate: CancelButtonDelegate?
-    
+
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         print ("Cancel Button pressed")
         cancelButtonDelegate?.cancelButtonPressedFrom(controller: self)
-        print ("All terms \(allTerms)")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
         
     }
-
+/////////////////////////////// SEARCH BAR STUFF ///////////////////////////////////////////////
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allTerms.glossary.count
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredTerms.count
+        }
+        if let wholeDeck = allTerms {
+            return wholeDeck.count
+
+        }
+        return 0;
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "term")
-        cell?.textLabel?.text = String(describing: allTerms.glossary[indexPath.row]["term"]!)
-        print(allTerms.glossary[indexPath.row]["term"]!)
+        let glossyflashcard: GlossyFlashcard
+        if searchController.isActive && searchController.searchBar.text != "" {
+            glossyflashcard = filteredTerms[indexPath.row]
+        }
+        else {
+            glossyflashcard = (allTerms?[indexPath.row])!
+        }
+        cell?.textLabel?.text = glossyflashcard.term
         return cell!
         
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
-        termToDetail = allTerms.glossary[indexPath.row] as NSDictionary
+        let tappedTerm: GlossyFlashcard
+        if searchController.isActive && searchController.searchBar.text != "" {
+            tappedTerm = filteredTerms[indexPath.row]
+        }
+        else {
+            tappedTerm = (allTerms?[indexPath.row])!
+        }
+        termToDetail = tappedTerm
         performSegue(withIdentifier: "detailsSegue", sender: tableView.cellForRow(at: indexPath))
         
 
@@ -68,6 +92,20 @@ class AllTermsTableViewController: UITableViewController, CancelButtonDelegate {
     func cancelButtonPressedFrom(controller: UIViewController){
         dismiss(animated: true, completion: nil)
     }
+    func filterContentForSearchText(searchText: String, scope: String = "All"){
+        filteredTerms = (allTerms?.filter { glossyflashcard in
+            return glossyflashcard.term.lowercased().contains(searchText.lowercased())
+            })!
+        tableView.reloadData()
     
-        
+    }
+    
+    
 }
+
+extension AllTermsTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController){
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
+}
+
