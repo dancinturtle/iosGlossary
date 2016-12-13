@@ -9,7 +9,7 @@
 import UIKit
 
 class TermDetailsTableViewController : UITableViewController {
-    var termObject:NSDictionary?
+    var termObject: GlossyFlashcard?
     var cancelButtonDelegate: CancelButtonDelegate?
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
@@ -34,7 +34,7 @@ class TermDetailsTableViewController : UITableViewController {
         self.tableView.estimatedRowHeight = 150
         self.tableView.rowHeight = UITableViewAutomaticDimension
         if let object = termObject {
-            self.title = String(describing: object["term"]!)
+            self.title = String(describing: object.term)
             
             // tableView.rowHeight = UITableViewAutomaticDimension
             // tableView.estimatedRowHeight = 150
@@ -48,12 +48,12 @@ class TermDetailsTableViewController : UITableViewController {
             resourcesCell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
 
             
-            definitionCell.textLabel?.text = String(describing: object["def"]!)
-            print(String(describing: object["def"]!))
-            print(String(describing: object["plat"]!))
-            print(String(describing: object["doc"]!))
-            platformCell.textLabel?.text = String(describing: object["plat"]!)
-            visitPageButton.setTitle(String(describing: object["doc"]!), for: .normal)
+            definitionCell.textLabel?.text = object.def
+//            print(String(describing: object["def"]!))
+//            print(String(describing: object["plat"]!))
+//            print(String(describing: object["doc"]!))
+            platformCell.textLabel?.text = object.plat
+            visitPageButton.setTitle(String(describing: object.doc), for: .normal)
             visitPageButton.titleLabel!.numberOfLines = 0
             visitPageButton.titleLabel!.adjustsFontSizeToFitWidth = true
             visitPageButton.titleLabel!.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -65,7 +65,7 @@ class TermDetailsTableViewController : UITableViewController {
     @IBAction func resourceButtonWasTapped(_ sender: UIButton) {
         print("Resource button tapped")
         if let object = termObject {
-            let stringurl = String(describing: object["doc"]!)
+            let stringurl = object.doc
             let url = URL(string: stringurl)
             if UIApplication.shared.canOpenURL(url!){
                 UIApplication.shared.open(url!, options: [:], completionHandler: nil)
