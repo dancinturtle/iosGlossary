@@ -72,9 +72,6 @@ class StudyCollectionViewController: UICollectionViewController, FlashCardDelega
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let itemToShow = currentDeck[indexPath.row % currentDeck.count]
-        
        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "flashcardCell", for: indexPath as IndexPath) as! CollectionViewCustomCell
         cell.delegate = self
@@ -87,6 +84,7 @@ class StudyCollectionViewController: UICollectionViewController, FlashCardDelega
         cell.updateLabel.isHidden = true
         
         if currentDeck.count > 0 {
+            let itemToShow = currentDeck[indexPath.row % currentDeck.count]
             if cell.side == "front" {
                 cell.flashcardLabel.text = itemToShow.term
             }
@@ -140,21 +138,21 @@ class StudyCollectionViewController: UICollectionViewController, FlashCardDelega
     }
     
     func flipFlashcard(sender: CollectionViewCustomCell){
-        let indexpath = collectionView?.indexPath(for: sender)?.row
+        let indexpath = (collectionView?.indexPath(for: sender)!.row)! % currentDeck.count
         if sender.side == "front"{
-            sender.flashcardLabel.text = currentDeck[indexpath!].term
+            sender.flashcardLabel.text = currentDeck[indexpath].term
         }
         else {
-            sender.flashcardLabel.text = currentDeck[indexpath!].def
+            sender.flashcardLabel.text = currentDeck[indexpath].def
         }
 
         sender.displayCell()
     }
     
     func visitDocs(sender: CollectionViewCustomCell){
-        let indexpath = collectionView?.indexPath(for: sender)?.row
+        let indexpath = (collectionView?.indexPath(for: sender)!.row)! % currentDeck.count
         
-        let stringurl = String(describing: currentDeck[indexpath!].doc)
+        let stringurl = String(describing: currentDeck[indexpath].doc)
         let url = URL(string: stringurl)
         if UIApplication.shared.canOpenURL(url!){
             UIApplication.shared.open(url!, options: [:], completionHandler: nil)
@@ -179,8 +177,8 @@ class StudyCollectionViewController: UICollectionViewController, FlashCardDelega
     func addToFocusDeck(sender: CollectionViewCustomCell){
         
         var found = false
-        let indexpath = collectionView?.indexPath(for: sender)?.row
-        let focusCard = currentDeck[indexpath!]
+        let indexpath = (collectionView?.indexPath(for: sender)!.row)! % currentDeck.count
+        let focusCard = currentDeck[indexpath]
         sender.updateLabel.isHidden = false
         
         for card in focusCards {
@@ -210,8 +208,8 @@ class StudyCollectionViewController: UICollectionViewController, FlashCardDelega
     
     func removeFromFocusDeck(sender: CollectionViewCustomCell){
         
-        let indexpath = collectionView?.indexPath(for: sender)?.row
-        let cardToDelete = currentDeck[indexpath!]
+        let indexpath = (collectionView?.indexPath(for: sender)!.row)! % currentDeck.count
+        let cardToDelete = currentDeck[indexpath % currentDeck.count]
         for card in focusCards {
             if card.term == cardToDelete.term {
                 managedObjectContext.delete(card)
@@ -226,7 +224,7 @@ class StudyCollectionViewController: UICollectionViewController, FlashCardDelega
                 print("\(error)")
             }
         }
-        currentDeck.remove(at: indexpath!)
+        currentDeck.remove(at: indexpath)
         collectionView?.reloadData()
     }
     
