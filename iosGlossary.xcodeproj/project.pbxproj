@@ -229,7 +229,7 @@
 				TargetAttributes = {
 					95402E501DD2776C00CC70EB = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = X3W4N77G35;
+						DevelopmentTeam = LZJ74AK2BB;
 						ProvisioningStyle = Automatic;
 					};
 					95402E671DD2776C00CC70EB = {
@@ -461,7 +461,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = X3W4N77G35;
+				DEVELOPMENT_TEAM = LZJ74AK2BB;
 				INFOPLIST_FILE = iosGlossary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codingdojo1.iosGlossary;
@@ -474,7 +474,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = X3W4N77G35;
+				DEVELOPMENT_TEAM = LZJ74AK2BB;
 				INFOPLIST_FILE = iosGlossary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codingdojo1.iosGlossary;
