@@ -8,58 +8,62 @@
 
 import UIKit
 
-class FlashcardsViewController: UITableViewController {
+class FlashcardsViewController: UIViewController {
     
     var navBarTitle: String?
     var focus = false
     var cancelButtonDelegate: CancelButtonDelegate?
+    var flashcardDelegate: FlashCardDelegate?
+    var allTerms: [GlossyFlashcard]?
     
-    
-    @IBOutlet weak var fullStackCell: UITableViewCell!
-    
-    @IBOutlet weak var focusStackCell: UITableViewCell!
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        fullStackCell.textLabel?.text = "All flashcards"
-        fullStackCell.textLabel?.textAlignment = .center
-        focusStackCell.textLabel?.textAlignment = .center
-        focusStackCell.textLabel?.text = "Focus flashcards"
-        if let navTitle = navBarTitle {
-            self.title = navTitle
-        }
+  
+    @IBAction func allFlashcardsPressed(_ sender: UIButton) {
+        focus = false
+        performSegue(withIdentifier: "studyTwoCollection", sender: self)
+        print("All flash")
     }
+    
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
-            cancelButtonDelegate?.cancelButtonPressedFrom(controller: self)
+        cancelButtonDelegate?.cancelButtonPressedFrom(controller: self)
     }
-   
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        print("cell selected! \(indexPath)")
-      
-        if indexPath == [1,0]{
-            focus = true
-           
-        }
-        performSegue(withIdentifier: "studySegue", sender: tableView.cellForRow(at: indexPath))
 
+    @IBAction func focusFlashcardsPressed(_ sender: UIButton) {
+        focus = true
+        performSegue(withIdentifier: "studyTwoCollection", sender: self)
+        print("Focusing")
+    }
+  
+  
+    override func viewDidLoad() {
+        super.viewDidLoad()
+                if let navTitle = navBarTitle {
+            self.title = navTitle
+        }
+        
     }
     
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let navController = segue.destination as! UINavigationController
-        let controller = segue.destination as! StudyViewController
-        if focus == true {
-            controller.navBarTitle = "Focus stack"
-            focus = false
-        }
-        else {
-            controller.navBarTitle = "Full stack"
+
+        if segue.identifier == "studyTwoCollection"{
+            
+            let controller = segue.destination as! StudyCollectionViewController
+            if let wholeDeck = allTerms {
+                controller.allTerms = wholeDeck
+            }
+            controller.section = self.title
+            if focus == true {
+                print("Going to focus stack")
+                controller.navBarTitle = "Focus stack"
+                focus = false
+            }
+            else {
+                print("Going to all stacks")
+                controller.navBarTitle = "Full stack"
+            
+            }
         }
     }
-
-    
-    
-    
 }
