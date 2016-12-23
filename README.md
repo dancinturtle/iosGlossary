@@ -1,4 +1,4 @@
-## [Ninja Flash Cards](https://itunes.apple.com/us/app/ninja-flash-cards/id1188158894?mt=8)
+# [Ninja Flash Cards](https://itunes.apple.com/us/app/ninja-flash-cards/id1188158894?mt=8)
 
 
 [![app icon](https://github.com/alex-wap/iosGlossary/blob/master/ss/app.jpg "app icon")](https://itunes.apple.com/us/app/ninja-flash-cards/id1188158894?mt=8)
@@ -19,6 +19,6 @@ Storyboard, Auto Layout, Table View, Collection View, Custom Cell, Core Data (Da
 
 ## Screenshots:
 
-![screenshot 1](https://github.com/alex-wap/iosGlossary/blob/master/ss/s1.png "Screenshot 1")
-![screenshot 2](https://github.com/alex-wap/iosGlossary/blob/master/ss/s2.png "Screenshot 2")
-![screenshot 3](https://github.com/alex-wap/iosGlossary/blob/master/ss/s3.png "Screenshot 3")
+[![screenshot 1](https://github.com/alex-wap/iosGlossary/blob/master/ss/s1.png "Screenshot 1")](https://itunes.apple.com/us/app/ninja-flash-cards/id1188158894?mt=8)
+[![screenshot 2](https://github.com/alex-wap/iosGlossary/blob/master/ss/s2.png "Screenshot 2")](https://itunes.apple.com/us/app/ninja-flash-cards/id1188158894?mt=8)
+[![screenshot 3](https://github.com/alex-wap/iosGlossary/blob/master/ss/s3.png "Screenshot 3")](https://itunes.apple.com/us/app/ninja-flash-cards/id1188158894?mt=8)
